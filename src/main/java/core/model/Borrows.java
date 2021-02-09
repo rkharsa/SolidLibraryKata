@@ -24,13 +24,15 @@ public class Borrows {
 
     }
 
+    public List<Borrow> getBorrows() {
+        return borrows;
+    }
+
     public void returnBook(Book book){
         int increm=0;
        for (Borrow borrow:
              borrows) {
             Book borrowBook=borrow.getBook();
-          borrowBook.display();
-          book.display();
             if(borrowBook.getTitle().equals(book.getTitle())
                     && borrowBook.getAuthor().getName().equals(book.getAuthor().getName())){
                 this.borrows.remove(increm);

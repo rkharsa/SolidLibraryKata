@@ -11,8 +11,6 @@ public class Library {
         this.users=new Users();
         this.books.loadBooks();
         this.users.loadUsers();
-        //this.users.displayUsers();
-        //this.books.displayBooks();
     }
 
     public Users getUsers() {
