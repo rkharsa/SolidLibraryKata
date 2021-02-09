@@ -16,7 +16,7 @@ public class App {
         }
     }
 
-    private static boolean firstMenu(Library library, boolean stop) {
+    private static boolean firstMenu(Library library, boolean stop) throws AccessDeniedException {
         boolean disconnect;
         System.out.println("taper 1 : Choisir l'utilisateur ");
         System.out.println("taper 2 : Ajouter un utilisateur");
