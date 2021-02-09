@@ -46,7 +46,7 @@ public class App {
     }
 
 
-    private static boolean secondMenu(Library library, boolean disconnect, User user, Scanner command) {
+    private static boolean secondMenu(Library library, boolean disconnect, User user, Scanner command) throws AccessDeniedException {
         switch (command.nextInt()) {
             case 1 -> library.getBooks().displayBooks();
             case 2 -> user.getBorrows().displayBorrows();
@@ -55,8 +55,22 @@ public class App {
             case 5 -> addBorrow(user);
             case 6 -> returnBook(user);
             case 7 -> disconnect = false;
+            case 8 -> addBook(library, user);
+
         }
         return disconnect;
+    }
+
+    private static void addBook(Library library, User user) {
+        try{
+        System.out.println("Entrer le titre");
+        Scanner title = new Scanner(System.in);
+        System.out.println("Entrer nom de l'auteur");
+        Scanner name = new Scanner(System.in);
+        library.getBooks().addBook(new Book(title.next(),new Author(name.next())), user);
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+    }
     }
 
     private static Scanner getMenu() {
@@ -67,6 +81,8 @@ public class App {
         System.out.println("taper 5:  emprunter un livre");
         System.out.println("taper 6:  retourner un livre");
         System.out.println("taper 7 : se déconnecter ");
+        System.out.println("taper 8 : ajouter un livre ");
+
 
         return new Scanner(System.in);
     }
